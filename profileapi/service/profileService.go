@@ -5,10 +5,19 @@ import (
 	"gopkg.in/mgo.v2"
 )
 
+type Config struct {
+	DBHost string
+}
+
 type ProfileService struct {
 }
 
-func (profileService *ProfileService) Run() {
+const (
+	DBNAME      string = "wisapp"
+	COL_PROFILE string = "profiles"
+)
+
+func (profileService *ProfileService) Run(cfg Config) error {
 	router := gin.Default()
 
 	session, err := mgo.Dial("localhost")
@@ -20,7 +29,7 @@ func (profileService *ProfileService) Run() {
 	// Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, true)
 
-	col := session.DB("wisapp").C("profiles")
+	col := session.DB(DBNAME).C(COL_PROFILE)
 
 	pr := &ProfileResource{col: col}
 
@@ -30,5 +39,6 @@ func (profileService *ProfileService) Run() {
 
 	router.POST("/api/profiles", pr.CreateProfile)
 
-	router.Run(":8089") // listen and serve on 0.0.0.0:8080
+	router.Run(":8089")
+	return nil
 }
