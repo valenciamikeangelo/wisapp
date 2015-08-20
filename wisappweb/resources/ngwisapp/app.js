@@ -11,7 +11,7 @@
   			controller:'RegistrationController'
   		})
   		.when('/home',{
-  			templateUrl:'resources/ngwisapp/components/posts/posts.html'
+  			templateUrl:'resources/ngwisapp/components/basetemplate/hometemplate.html'
   		})
   		.otherwise({redirectTo:'/home'});	
 	}]);
