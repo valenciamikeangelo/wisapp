@@ -10,7 +10,10 @@
   			templateUrl:'resources/ngwisapp/components/registration/register.html',
   			controller:'RegistrationController'
   		})
-  		.otherwise({redirectTo:'/'});	
+  		.when('/home',{
+  			templateUrl:'resources/ngwisapp/components/posts/posts.html'
+  		})
+  		.otherwise({redirectTo:'/home'});	
 	}]);
 	
 

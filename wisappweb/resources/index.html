@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <base href="/">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/ngwisapp/app.css">
     <script type="text/javascript" src=https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js></script>
     <script type="text/javascript" src=https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js></script>
     <script type="text/javascript" src=https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js></script>
@@ -19,6 +20,17 @@
   </head>
   <body>
     <div ng-include="'resources/ngwisapp/shared/header.html'"></div>
-    <div ng-view class="container-fluid"></div>
+    <div class="container">
+        <div class="row">
+           <div class="col-md-8" ng-view>
+           </div>
+            <div class="col-md-4" ng-include="'resources/ngwisapp/shared/sidebar.html'">
+             </div> 
+              <hr>
+              <div ng-include="'resources/ngwisapp/shared/footer.html'">
+             </div> 
+        </<div>
+    </div>
+
   </body>
 </html>
