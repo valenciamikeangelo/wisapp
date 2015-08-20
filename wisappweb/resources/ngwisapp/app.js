@@ -10,6 +10,9 @@
   			templateUrl:'resources/ngwisapp/components/registration/register.html',
   			controller:'RegistrationController'
   		})
+  		.when('/login',{
+  			templateUrl:'resources/ngwisapp/components/basetemplate/logintemplate.html'
+  		})
   		.when('/home',{
   			templateUrl:'resources/ngwisapp/components/basetemplate/hometemplate.html'
   		})
