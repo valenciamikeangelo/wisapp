@@ -20,7 +20,10 @@ func (gatewayService *ApiGateWayService) Run(cfg Config) error {
 		c.String(200, "Api Gateway Service is Available")
 	})
 
+	router.POST("/api/authuser", pac.AuthenticateUser)
+	
 	router.POST("/api/profiles", pac.CreateProfile)
+	
 	router.Run(":3000")
 	return nil
 }

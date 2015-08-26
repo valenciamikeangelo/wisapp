@@ -38,6 +38,7 @@ func (profileService *ProfileService) Run(cfg Config) error {
 	})
 
 	router.POST("/api/profiles", pr.CreateProfile)
+	router.POST("/api/authuser", pr.FindUserByEmailPass)
 
 	router.Run(":8089")
 	return nil

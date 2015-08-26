@@ -27,3 +27,22 @@ func (pac *ProfileApiClient) CreateProfile(c *gin.Context) {
 		c.JSON(200, resuser)
 	}
 }
+
+
+func (pac *ProfileApiClient) AuthenticateUser(c *gin.Context) {
+	var resuser profile.Profile
+	var user profile.Profile
+	c.BindJSON(&user)
+
+	url := "http://" + pac.Host + ":" + pac.Port + "/api/authuser"
+	r, err := makeRequest("POST", url, user)
+	if err != nil {
+		c.JSON(201, user)
+	}
+	err = processResponseEntity(r, &resuser, 201)
+	if err != nil {
+		c.JSON(201, user)
+	} else {
+		c.JSON(200, resuser)
+	}
+}
