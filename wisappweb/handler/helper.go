@@ -14,6 +14,7 @@ var _ = log.Print
 
 func makeRequest(method string, url string, entity interface{}) (*http.Response, error) {
 	req, err := buildRequest(method, url, entity)
+	log.Print("Sending Request to URL : " + url + " method : " + method)
 	if err != nil {
 		return nil, err
 	}

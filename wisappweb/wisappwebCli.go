@@ -12,6 +12,7 @@ import (
 
 func getConfig(c *cli.Context) (server.Config, error) {
 	yamlPath := c.GlobalString("config")
+	log.Print("Locating CONFIG File : " + yamlPath)
 	config := server.Config{}
 
 	if _, err := os.Stat(yamlPath); err != nil {
@@ -24,6 +25,7 @@ func getConfig(c *cli.Context) (server.Config, error) {
 	}
 
 	err = yaml.Unmarshal([]byte(ymlData), &config)
+
 	return config, err
 }
 

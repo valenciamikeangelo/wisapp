@@ -1,2 +1,2 @@
-GateWayHost : localhost
-GateWayPort : 3000
+svchost:localhost
+svcport:3000
