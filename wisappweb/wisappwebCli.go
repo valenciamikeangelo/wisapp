@@ -14,6 +14,7 @@ func getConfig(c *cli.Context) (server.Config, error) {
 	yamlPath := c.GlobalString("config")
 	log.Print("Locating CONFIG File : " + yamlPath)
 	config := server.Config{}
+	
 
 	if _, err := os.Stat(yamlPath); err != nil {
 		return config, errors.New("config path not valid")
