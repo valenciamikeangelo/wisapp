@@ -45,7 +45,7 @@ func (pr *ProfileResource) FindUserByEmailPass(c *gin.Context) {
 		c.JSON(200, result)
 	} else {
 		log.Print("User with Email = " + nprof.Email + " is Not Found !")
-		c.JSON(http.StatusNotFound, gin.H{"status": "Not Found"})
+		c.JSON(http.StatusNotFound, gin.H{"status": "Not Found!"})
 	}
 
 }
