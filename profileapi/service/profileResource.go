@@ -7,6 +7,7 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
+	"net/http"
 )
 
 type ProfileResource struct {
@@ -23,7 +24,7 @@ func (pr *ProfileResource) CreateProfile(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	c.JSON(200, nprof)
+	c.JSON(http.StatusCreated, nprof)
 }
 
 func (pr *ProfileResource) FindUserByEmailPass(c *gin.Context) {
@@ -32,15 +33,19 @@ func (pr *ProfileResource) FindUserByEmailPass(c *gin.Context) {
 	c.Bind(&nprof)
 	result := profile.Profile{}
 	log.Print("Finding Profile with Email = " + nprof.Email)
-	var err = pr.col.Find(bson.M{"email":nprof.Email}).One(&result)
+	var err = pr.col.Find(bson.M{"email": nprof.Email}).One(&result)
 	if err != nil {
-		log.Fatal(err)
+		log.Print("User with Email = " + nprof.Email + " is Not Found !")
+		c.JSON(http.StatusNotFound, gin.H{"status": "Not Found"})
 	}
-	
+
 	decryptp := putil.Decrypt(result.Password)
-	if nprof.Password==decryptp{
-		log.Print("User with Email = " + nprof.Email +" is Valid!")
+	if nprof.Password == decryptp {
+		log.Print("User with Email = " + nprof.Email + " is Valid!")
 		c.JSON(200, result)
-		}
-	
+	} else {
+		log.Print("User with Email = " + nprof.Email + " is Not Found !")
+		c.JSON(http.StatusNotFound, gin.H{"status": "Not Found"})
+	}
+
 }
