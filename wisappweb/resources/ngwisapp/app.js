@@ -18,7 +18,9 @@
         controllerAs:'regCont'
   		})
   		.when('/login',{
-  			templateUrl:'resources/ngwisapp/components/basetemplate/logintemplate.html'
+  			templateUrl:'resources/ngwisapp/components/basetemplate/logintemplate.html',
+  	        controller:'SharedController',
+  	        controllerAs:'sharedCont'
   		})
   		.when('/home',{
   			templateUrl:'resources/ngwisapp/components/basetemplate/hometemplate.html',

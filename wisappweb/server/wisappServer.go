@@ -23,6 +23,10 @@ func (ws *WisappServer) Run(cfg Config) error {
 	log.Print("Gateway Host Config : " + cfg.svchost)
 	log.Print("Gateway Port Config : " + cfg.svcport)
 	gatewayClient := &client.GateWayApiClient{Host: "localhost", Port: "3000"}
+	
+	
+	router.POST("/auth/login", gatewayClient.AuthenticateUser)
+	
 	router.POST("/api/profiles", gatewayClient.CreateProfile)
 	router.Run(":8085")
 	return nil
