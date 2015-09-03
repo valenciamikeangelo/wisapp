@@ -1,11 +1,18 @@
 {
-  "name": "wisapp-postapi",
+  "name": "postapi",
   "version": "0.0.0",
-  "description": "WISAPP WEB Service application using NodeJS",
-  "main": "app.js",
-  "author": "Michael Valencia",
   "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.3",
+    "express": "~4.13.1",
+    "mongoose": "^4.1.5",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
   }
 }
