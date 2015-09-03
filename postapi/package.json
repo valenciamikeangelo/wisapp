@@ -1,0 +1,11 @@
+{
+  "name": "wisapp-postapi",
+  "version": "0.0.0",
+  "description": "WISAPP WEB Service application using NodeJS",
+  "main": "app.js",
+  "author": "Michael Valencia",
+  "private": true,
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
